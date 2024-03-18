@@ -1,5 +1,7 @@
 import UIKit
 
-protocol QuestionFactoryProtocol: AnyObject {
+protocol QuestionFactoryProtocol {
+    var delegate: QuestionFactoryDelegate? { get set }
     func requestNextQuestion()
+    func loadData()
 }

@@ -1,5 +1,5 @@
 import UIKit
 
 protocol AlertPresenterDelegate: AnyObject {
-    func alertDidDismiss()
+    func show(alert: UIAlertController)
 }

@@ -1,11 +1,11 @@
-import UIKit
+import Foundation
 
 struct GameRecord: Codable {
     let correct: Int
     let total: Int
     let date: Date
     
-    func comparisonCorrect(currentGame: GameRecord) -> Bool {
-        self.correct > currentGame.correct
+    func isBetterThan(_ another: GameRecord) -> Bool {
+        correct > another.correct
     }
 }
