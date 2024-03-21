@@ -1,9 +1,14 @@
 import UIKit
 
 final class QuestionFactory: QuestionFactoryProtocol {
-    private let moviesLoader: MoviesLoading
     weak var delegate: QuestionFactoryDelegate?
+    private let moviesLoader: MoviesLoading
     private var movies: [MostPopularMovie] = []
+    
+    init(moviesLoader: MoviesLoading, delegate: QuestionFactoryDelegate?) {
+        self.delegate = delegate
+        self.moviesLoader = moviesLoader
+    }
     
     func loadData() {
         moviesLoader.loadMovies { [weak self] result in
@@ -58,10 +63,5 @@ final class QuestionFactory: QuestionFactoryProtocol {
                 self.delegate?.didReceiveNextQuestion(question: question)
             }
         }
-    }
-    
-    init(moviesLoader: MoviesLoading, delegate: QuestionFactoryDelegate?) {
-        self.delegate = delegate
-        self.moviesLoader = moviesLoader
     }
 }
